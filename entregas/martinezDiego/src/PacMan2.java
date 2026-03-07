@@ -13,19 +13,54 @@ public class PacMan2 {
                 { 1, 1, 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1, 1, 1 },
         };
-        
+
         String direccion;
-        System.out.println("Bienvenido a PacMan, inroduce la posicion de salida");
-        int posicionJugadorX = scanner.nextInt();
-        int posicionJugadorY = scanner.nextInt();
-        mapa[posicionJugadorX][posicionJugadorY] = 0;
+        int[] posicionJugador = { 3, 3 };
 
-        moverJugador(mapa);
-        imprimirMapa(mapa);
+        boolean jugando = true;
+        System.out.println("Bienvenido a PacMan, presiona enter para empezar, te mueves con wasd ");
+        scanner.nextLine();
+        while (jugando) {
+            System.out.println("introduce wasd");
+            direccion = scanner.nextLine();
+            moverJugador(mapa, posicionJugador, direccion);
+            imprimirMapa(mapa);
 
+        }
+6
     }
 
-    static void moverJugador(int[][] mapa, int posicionJugadorX, int posicionJugadorY, String direccion) {
+    static void moverJugador(int[][] mapa, int[] posicionJugador, String direccion) {
+        int nuevaPosicionJugadorX = posicionJugador[0];
+        int nuevaPosicionJugadorY = posicionJugador[1];
+        switch (direccion) {
+            case "w":
+                nuevaPosicionJugadorX--;
+                break;
+            case "s":
+                nuevaPosicionJugadorX++;
+                break;
+            case "a":
+                nuevaPosicionJugadorY--;
+                break;
+            case "d":
+                nuevaPosicionJugadorY++;
+                break;
+            default:
+                System.out.println("Direccion invalida");
+                return;
+        }
+
+        if (nuevaPosicionJugadorX < 0 || nuevaPosicionJugadorX >= mapa.length || nuevaPosicionJugadorY < 0
+                || nuevaPosicionJugadorY >= mapa[0].length) {
+            System.out.println("Fuera de mapa");
+            return;
+        }
+
+        mapa[posicionJugador[0]][posicionJugador[1]] = 1;
+        mapa[nuevaPosicionJugadorX][nuevaPosicionJugadorY] = 0;
+        posicionJugador[0] = nuevaPosicionJugadorX;
+        posicionJugador[1] = nuevaPosicionJugadorY;
 
     }
 

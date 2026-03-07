@@ -19,8 +19,7 @@ public class Edificio2 {
                 { 0, 0, 5, 0, 0 },
 
         };
-        int MAXIMO_HORAS = 168;
-
+        final int MAXIMO_HORAS = 168;
         String TECHO_EDIFICIO = "|||||||||||||||||||||";
         int hora = 0;
         int totalHorasLuzEncendida = 0;
@@ -38,9 +37,8 @@ public class Edificio2 {
             System.out.println("Luces encendidas (en horas): " + totalHorasLuzEncendida);
             System.out.println("-------------------");
 
-
             System.out.println(TECHO_EDIFICIO);
-            
+
             imprimirEdifico(edificio);
 
         }
@@ -48,10 +46,10 @@ public class Edificio2 {
     }
 
     static int gestionarVentanas(int[][] edificio) {
-        int horasLuzEncendida = 0; 
+        int horasLuzEncendida = 0;
         for (int fila = 0; fila < edificio.length; fila++) {
             for (int columna = 0; columna < edificio[fila].length; columna++) {
-            
+
                 if (edificio[fila][columna] != 5) {
                     final double PROBABILIDAD_PERSIANA_ABIERTA = 0.7;
                     final double PROBABILIDAD_LUZ_ENCENDIDA = 0.6;
@@ -60,7 +58,7 @@ public class Edificio2 {
 
                     if (probabilidadLuzEncendida < PROBABILIDAD_LUZ_ENCENDIDA) {
                         edificio[fila][columna] = 1;
-                        horasLuzEncendida ++;
+                        horasLuzEncendida++;
                     } else if (probabilidadPersianaAbierta < PROBABILIDAD_PERSIANA_ABIERTA) {
                         edificio[fila][columna] = 2;
                     } else
@@ -73,8 +71,6 @@ public class Edificio2 {
         }
         return horasLuzEncendida;
     }
-
-    
 
     static void imprimirEdifico(int[][] edificio) {
         for (int fila = 0; fila < edificio.length; fila++) {
