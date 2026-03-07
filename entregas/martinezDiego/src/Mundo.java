@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Mundo {
 
     public static void main(String[] args) {
-        
+        Scanner scanner = new Scanner(System.in);
 
         int[][] mapa = {
                 { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2 },
@@ -29,19 +29,20 @@ public class Mundo {
 
         while (jugando) {
             imprimirMapa(mapa);
-            int[] nuevaPosicion = moverJugador(mapa, jugadorX, jugadorY);
+            int[] nuevaPosicion = moverJugador(mapa, jugadorX, jugadorY, scanner);
             jugadorX = nuevaPosicion[0];
             jugadorY = nuevaPosicion[1];
 
         }
+        scanner.close();
 
     }
 
-    static int[] moverJugador(int[][] mapa, int jugadorX, int jugadorY) {
-        Scanner scanner = new Scanner(System.in);
+    static int[] moverJugador(int[][] mapa, int jugadorX, int jugadorY, Scanner scanner) {
         System.out.println("a donde quieres ir:   ||1-arriba||2-abajo||3-derecha||4-izquierda|| ");
 
         int direccion = scanner.nextInt();
+
         int nuevoX = jugadorX;
         int nuevoY = jugadorY;
 
@@ -72,7 +73,6 @@ public class Mundo {
         mapa[nuevoX][nuevoY] = 5;
 
         return new int[] { nuevoX, nuevoY };
-       
 
     }
 
