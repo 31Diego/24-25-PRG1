@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 public class EscalaArcordes {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         String[] notas = { "do", "do#", "re", "re#", "mi", "fa", "fa#", "sol", "sol#", "la" };
 
